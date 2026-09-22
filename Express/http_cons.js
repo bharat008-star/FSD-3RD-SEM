@@ -6,7 +6,12 @@ const server = http.createServer((req, res) => {
         res.end("GET REQUEST RECEIVED");
     } else if(req.method === "POST" && req.url === '/') { // get post request
         res.end("POST REQUEST RECEIVED");
-    } 
+    } else if(req.method === "patch" && req.url === '/') { // get patch request
+        res.end("PATCH REQUEST RECEIVED");
+    } else {
+        res.statusCode = 404;
+        res.end("NOT FOUND");
+    }
 });
 
 server.listen(3000, (req, res)=>{
